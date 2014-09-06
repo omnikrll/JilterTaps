@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title>FilterTaps</title>
+
+	<style>
+		span {
+			display: inline-block;
+			width: 60px;
+			text-align: right;
+		}
+	</style>
+
+</head>
+<body>
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/4KoprXAeX94?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<video id="source" src="percussion-ensemble.mp4" controls></video>
+<br/>
+<span>Dry</span><input id="dryWet" type="range" min="0" max="1" step="0.01" value="0" oninput="wetDryHandler(this);"/><span style="text-align: left;">Wet</span>
+
+<br/>
+<br/>
+
+<div id="filterBank">
+	<span>LP 88hz</span>
+	<input class="slider lowpass" data-gainstage
+	="0" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>125Hz</span>
+	<input class="slider bandpass" data-gainstage="1" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>175Hz</span>
+	<input class="slider bandpass" data-gainstage="2" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>250Hz</span>
+	<input class="slider bandpass" data-gainstage="3" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>350Hz</span>
+	<input class="slider bandpass" data-gainstage="4" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>500Hz</span>
+	<input class="slider bandpass" data-gainstage="5" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>750Hz</span>
+	<input class="slider bandpass" data-gainstage="6" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>1k</span>
+	<input class="slider bandpass" data-gainstage="7" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>1.4k</span>
+	<input class="slider bandpass" data-gainstage="8" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>2k</span>
+	<input class="slider bandpass" data-gainstage="9" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>2.8k</span>
+	<input class="slider bandpass" data-gainstage="10" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>4k</span>
+	<input class="slider bandpass" data-gainstage="11" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>5.6k</span>
+	<input class="slider bandpass" data-gainstage="12" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+
+	<span>HP 7k</span>
+	<input class="slider highpass" data-gainstage="13" type="range" min="0" max="1" step="0.01" value="0" oninput="filterGainHandler(this);"/>
+	<br/>
+</div>
+
+<script type="text/javascript" src="FilterTaps.js"></script>
+</body>
+</html>
