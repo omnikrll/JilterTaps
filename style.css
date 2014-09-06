@@ -3,3 +3,33 @@ div {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+.tap-line {
+	border-bottom: 1px solid black;
+	margin-bottom: 8px;
+	padding: 2px;
+}
+
+.delay-ctrl, .filter-ctrl, .localization-ctrl {
+	float: left;
+	padding: 0 8px;
+	border-right: 1px solid black;
+}
+
+.delay-ctrl {
+	padding-left: 0;
+}
+
+.localization-ctrl {
+
+	border: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.header {
+	font-size: 18px;
+	font-weight: bold;
+}
