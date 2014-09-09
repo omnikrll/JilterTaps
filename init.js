@@ -1,34 +1,38 @@
 var contextClass = null,
 	context = null,
 	source = null,
-	filterTaps = null;
+	jilterTaps = null;
 
-var filterGainHandler = function(e) {
-	var fraction = parseFloat(e.value) / parseFloat(e.max),
-		factor = Math.pow(fraction, 2),
-		gainStage = filterTaps.gainStages[+e.getAttribute('data-gainstage')];
+// just leaving these in for reference right now.
+// rewrite event handlers as methods of objects and
+// dynamically bind them on object init.
 
-	gainStage.gain.setValueAtTime(factor, context.currentTime);
-}
+// var filterGainHandler = function(e) {
+// 	var fraction = parseFloat(e.value) / parseFloat(e.max),
+// 		factor = Math.pow(fraction, 2),
+// 		gainStage = jilterTaps.gainStages[+e.getAttribute('data-gainstage')];
 
-var wetDryHandler = function(e) {
-	var val = parseFloat(e.value),
-		max = parseFloat(e.max),
-		fraction = parseFloat(val / max),
-		wetFactor = Math.pow(fraction, 2),
-		dryFactor = Math.pow((1 - fraction), 2);
+// 	gainStage.gain.setValueAtTime(factor, context.currentTime);
+// }
 
-	if (val == 0) {
-		wetFactor = 0;
-		dryFactor = 1;
-	} else if (val == 1) {
-		wetFactor = 1;
-		dryFactor = 0;
-	}
+// var wetDryHandler = function(e) {
+// 	var val = parseFloat(e.value),
+// 		max = parseFloat(e.max),
+// 		fraction = parseFloat(val / max),
+// 		wetFactor = Math.pow(fraction, 2),
+// 		dryFactor = Math.pow((1 - fraction), 2);
 
-	filterTaps.wetGain.gain.setValueAtTime(wetFactor, context.currentTime);
-	filterTaps.dryGain.gain.setValueAtTime(dryFactor, context.currentTime);
-}
+// 	if (val == 0) {
+// 		wetFactor = 0;
+// 		dryFactor = 1;
+// 	} else if (val == 1) {
+// 		wetFactor = 1;
+// 		dryFactor = 0;
+// 	}
+
+// 	jilterTaps.wetGain.gain.setValueAtTime(wetFactor, context.currentTime);
+// 	jilterTaps.dryGain.gain.setValueAtTime(dryFactor, context.currentTime);
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
@@ -37,10 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
         context = new contextClass();
     }
 
-	source = context.createMediaElementSource(document.getElementById('source'));
+	// source = context.createMediaElementSource(document.getElementById('source'));
+	osc = context.createOscillator();
+	osc.frequency.setValueAtTime(436, context.currentTime);
+	jilterTaps = new JilterTaps(context);
 
-	filterTaps = new FilterTaps(context);
-
-	source.connect(filterTaps.audioIn);
-	filterTaps.connect(context.destination);
+	osc.connect(jilterTaps.audioIn);
+	jilterTaps.connect(context.destination);
 });

@@ -2,50 +2,13 @@
 <head>
 	<title>JilterTaps</title>
 
-	<style>
-		div {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-
-		.tap-line {
-			border-bottom: 1px solid black;
-			margin-bottom: 8px;
-			padding: 2px;
-		}
-
-		.delay-ctrl, .filter-ctrl, .localization-ctrl {
-			float: left;
-			padding: 0 8px;
-			border-right: 1px solid black;
-		}
-
-		.delay-ctrl {
-			padding-left: 0;
-		}
-
-		.localization-ctrl {
-
-			border: none;
-		}
-
-		.clear {
-			clear: both;
-		}
-
-		.header {
-			font-size: 18px;
-			font-weight: bold;
-		}
-	</style>
+	<link rel="stylesheet" href="style.css"/>
 
 </head>
 <body>
 
-<video id="source" src="http://kfhohn.com/ResonantFilterBank/percussion-ensemble.mp4" controls></video>
+<video id="source" src="320x240.m4v" controls></video>
 <br/>
-<span>Dry</span><input id="dryWet" type="range" min="0" max="1" step="0.01" value="0" oninput="wetDryHandler(this);"/><span style="text-align: left;">Wet</span>
 
 <br/>
 <br/>
@@ -55,20 +18,35 @@
 	<div class="tap-line" id="tap_0">
 		<div class="header">Line 1</div>
 		<div class="delay-ctrl">
-			<label for="dtime_0">Delay Time</label><input name="dtime_0" id="dtime_0" type="range"/><br/>
-			<label for="feedback_0">Feedback</label><input name="feedback_0" id="feedback_0" type="range"/>
+			<input name="dtime_0" id="dtime_0" class="custom-slider" type="range"/>
+			<label for="dtime_0" class="custom-slider-label"><span></span></label>
+			<span class="label">Delay Time</span>
+			<div class="clear"></div>
+			<input name="feedback_0" id="feedback_0" class="custom-slider" type="range"/>
+			<label for="feedback_0" class="custom-slider-label"><span></span></label>
+			<span class="label">Feedback</span>
 		</div>
 		<div class="filter-ctrl">
-			<label for="freq_0">Filter Freq</label><input name="freq_0" id="freq_0" type="range"/><br/>
-			<label for="q_0">Filter Q</label><input name="q_0" id="q_0" type="range"/>
+			<input name="freq_0" id="freq_0" class="custom-slider" type="range"/>
+			<label for="freq_0" class="custom-slider-label"><span></span></label>
+			<span class="label">Filter Freq</span>
+			<div class="clear"></div>
+			<input name="q_0" id="q_0" class="custom-slider" type="range"/>
+			<label for="q_0" class="custom-slider-label"><span></span></label>
+			<span class="label">Filter Q</span>
 		</div>
-		<div class="localization-ctrl">
-			<label for="lvl_0">Level</label><input name="lvl_0" id="lvl_0" type="range"/><br/>
-			<label for="pan_0">Pan</label><input name="pan_0" id="pan_0" type="range"/>
+		<div class="mix-ctrl">
+			<input name="lvl_0" id="lvl_0" class="custom-slider" type="range"/>
+			<label for="lvl_0" class="custom-slider-label"><span></span></label>
+			<span class="label">Level</span>
+			<div class="clear"></div>
+			<input name="pan_0" id="pan_0" class="custom-slider" type="range"/>
+			<label for="pan_0" class="custom-slider-label"><span></span></label>
+			<span class="label">Pan</span>
 		</div>
 		<div class="clear"></div>
 	</div>
-
+<!-- 
 	<div class="tap-line" id="tap_1">
 		<div class="header">Line 2</div>
 		<div class="delay-ctrl">
@@ -79,7 +57,7 @@
 			<label for="freq_1">Filter Freq</label><input name="freq_1" id="freq_1" type="range"/><br/>
 			<label for="q_1">Filter Q</label><input name="q_1" id="q_1" type="range"/>
 		</div>
-		<div class="localization-ctrl">
+		<div class="mix-ctrl">
 			<label for="lvl_1">Level</label><input name="lvl_1" id="lvl_1" type="range"/><br/>
 			<label for="pan_1">Pan</label><input name="pan_1" id="pan_1" type="range"/>
 		</div>
@@ -96,7 +74,7 @@
 			<label for="freq_2">Filter Freq</label><input name="freq_2" id="freq_2" type="range"/><br/>
 			<label for="q_2">Filter Q</label><input name="q_2" id="q_2" type="range"/>
 		</div>
-		<div class="localization-ctrl">
+		<div class="mix-ctrl">
 			<label for="lvl_2">Level</label><input name="lvl_2" id="lvl_2" type="range"/></br>
 			<label for="pan_2">Pan</label><input name="pan_2" id="pan_2" type="range"/>
 		</div>
@@ -113,7 +91,7 @@
 			<label for="freq_3">Filter Freq</label><input name="freq_3" id="freq_3" type="range"/><br/>
 			<label for="q_3">Filter Q</label><input name="q_3" id="q_3" type="range"/>
 		</div>
-		<div class="localization-ctrl">
+		<div class="mix-ctrl">
 			<label for="lvl_3">Level</label><input name="lvl_3" id="lvl_3" type="range"/><br/>
 			<label for="pan_3">Pan</label><input name="pan_3" id="pan_3" type="range"/>
 		</div>
@@ -130,7 +108,7 @@
 			<label for="freq_4">Filter Freq</label><input name="freq_4" id="freq_4" type="range"/><br/>
 			<label for="q_4">Filter Q</label><input name="q_4" id="q_4" type="range"/>
 		</div>
-		<div class="localization-ctrl">
+		<div class="mix-ctrl">
 			<label for="lvl_4">Level</label><input name="lvl_4" id="lvl_4" type="range"/><br/>
 			<label for="pan_4">Pan</label><input name="pan_4" id="pan_4" type="range"/>
 		</div>
@@ -147,229 +125,17 @@
 			<label for="freq_5">Filter Freq</label><input name="freq_5" id="freq_5" type="range"/><br/>
 			<label for="q_5">Filter Q</label><input name="q_5" id="q_5" type="range"/>
 		</div>
-		<div class="localization-ctrl">
+		<div class="mix-ctrl">
 			<label for="lvl_5">Level</label><input name="lvl_5" id="lvl_5" type="range"/><br/>
 			<label for="pan_5">Pan</label><input name="pan_5" id="pan_5" type="range"/>
 		</div>	
 		<div class="clear"></div>
-	</div>
+	</div> -->
 	
 </div>
 
-<!-- <script type="text/javascript" src="JilterTaps.js"></script>
-<script type="text/javascript" src="init.js"></script> -->
-<script type="text/javascript">
-	var contextClass = null,
-		context = null,
-		source = null,
-		filterTaps = null;
-
-	var filterGainHandler = function(e) {
-		var fraction = parseFloat(e.value) / parseFloat(e.max),
-			factor = Math.pow(fraction, 2),
-			gainStage = filterTaps.gainStages[+e.getAttribute('data-gainstage')];
-
-		gainStage.gain.setValueAtTime(factor, context.currentTime);
-	}
-
-	var wetDryHandler = function(e) {
-		var val = parseFloat(e.value),
-			max = parseFloat(e.max),
-			fraction = parseFloat(val / max),
-			wetFactor = Math.pow(fraction, 2),
-			dryFactor = Math.pow((1 - fraction), 2);
-
-		if (val == 0) {
-			wetFactor = 0;
-			dryFactor = 1;
-		} else if (val == 1) {
-			wetFactor = 1;
-			dryFactor = 0;
-		}
-
-		filterTaps.wetGain.gain.setValueAtTime(wetFactor, context.currentTime);
-		filterTaps.dryGain.gain.setValueAtTime(dryFactor, context.currentTime);
-	}
-
-	document.addEventListener('DOMContentLoaded', function() {
-	    contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
-
-	    if (contextClass) {
-	        context = new contextClass();
-	    }
-
-		source = context.createMediaElementSource(document.getElementById('source'));
-
-		filterTaps = new FilterTaps(context);
-
-		source.connect(filterTaps.audioIn);
-		filterTaps.connect(context.destination);
-	});
-	// first we're going to want a class for a delay line, so that when we're
-	// constructing the FilterTaps we can just instantiate a bunch of TapLines
-
-	var StereoPanner = (function(context) {
-	    var StereoPanner = function(context) {
-	    	this.context = context;
-	    	this.audioIn = context.createGain();
-	        this.splitter = context.createChannelSplitter(2);
-	        this.gainL = context.createGain();
-	        this.gainR = context.createGain();
-	        this.merger = context.createChannelMerger(2);
-	        this.compressor = context.createDynamicsCompressor();
-	        this.audioOut = context.createGain();
-
-	        this.init();
-	    }
-
-	    StereoPanner.prototype.constructor = StereoPanner;
-
-	    StereoPanner.prototype.init = function() {
-	        var self = this;
-
-	        self.audioIn.connect(self.splitter);
-
-	        self.splitter.connect(self.gainL);
-	        self.splitter.connect(self.gainR);
-
-	        self.gainL.connect(self.merger);
-	        self.gainR.connect(self.merger);
-
-	        self.merger.connect(self.compressor);
-
-	        self.merger.connect(self.audioOut);
-	    }
-
-	    StereoPanner.prototype.connect = function(node) {
-	        this.audioOut.connect(node);
-	    }
-
-	    return StereoPanner;
-	})();
-
-	var TapLine = (function(context) {
-
-		var TapLine = function(context) {
-			this.context = context;
-			this.audioIn = this.context.createGain();
-			this.delay = this.context.createDelay();
-			this.feedback = this.context.createGain();
-			this.filter = this.context.createBiquadFilter();
-			this.gainStage = this.context.createGain();
-			this.panner = new StereoPanner(context);
-			this.audioOut = this.context.createGain();
-
-			this.init();
-		}
-
-		TapLine.prototype.constructor = TapLine;
-
-		TapLine.prototype.init = function() {
-			// init function
-			var self = this,
-				context = self.context;
-
-			self.filter.type = "bandpass";
-
-			self.audioIn.connect(self.delay);
-			self.delay.connect(self.filter);
-			self.delay.connect(self.feedback);
-			self.feedback.connect(self.delay);
-			self.filter.connect(self.gainStage);
-			self.gainStage.connect(self.panner.audioIn);
-			self.panner.connect(self.audioOut);
-
-			self.audioOut.connect(context.destination);
-		}
-
-		TapLine.prototype.setDelayTime = function(time) {
-			var now = this.context.currentTime;
-			this.delay.delayTime.setValueAtTime(time, now);		
-		}
-
-		TapLine.prototype.setFeedback = function(level) {
-			var now = this.context.currentTime;
-			this.feedback.gain.setValueAtTime(level, now);
-		}
-
-		TapLine.prototype.setFilterFrequency = function(freq) {
-			var now = this.context.currentTime;
-			this.filter.frequency.setValueAtTime(freq, now);
-		}
-
-		TapLine.prototype.setFilterQ = function(q) {
-			var now = this.context.currentTime;
-			this.filter.Q.setValueAtTime(q, now);
-		}
-
-		TapLine.prototype.connect = function(node) {
-			this.audioOut.connect(node);
-		}
-
-		return TapLine;
-
-	})();
-
-	var FilterTaps = (function(context) {
-
-		var FilterTaps = function(context) {
-			// constructor
-			this.context = context;
-			this.audioIn = this.context.createGain();
-			this.tapLines = [];
-			this.baseDelayTime = 0.1;
-			this.gainStage = this.context.createGain();
-			this.audioOut = this.context.createGain();
-
-			this.init();
-		}
-
-		FilterTaps.prototype.constructor = FilterTaps;
-
-		FilterTaps.prototype.init = function() {
-			var self = this,
-				context = self.context;
-
-			self.makeTapLines();
-			// init;
-		}
-
-		FilterTaps.prototype.makeTapLines = function() {
-			var self = this,
-				context = self.context,
-				timeFactors = [19, 106, 288, 34, 1, 7],
-				filterFreqs = [831, 1319, 1480, 1976, 988, 831],
-				baseDelayTime = self.baseDelayTime;
-				baseQ = 0.39;
-
-			var makeTapLine = function(i) {
-				var time = timeFactors[i] * baseDelayTime,
-					freq = filterFreqs[i],
-					tapLine = new TapLine(context);
-
-				tapLine.setDelayTime(time);
-				tapLine.setFeedback(0.4);
-				tapLine.setFilterFrequency(freq);
-				tapLine.setFilterQ(baseQ);
-
-				return tapLine;
-			}
-
-			for (var i=0, ii=timeFactors.length; i<ii; i++) {
-				var tapLine = makeTapLine(i);
-
-				tapLine.connect(self.gainStage);
-				self.tapLines.push(tapLine);
-			}
-		}
-
-		FilterTaps.prototype.connect = function(node) {
-			this.audioOut.connect(node);
-		}
-
-		return FilterTaps;
-
-	})();
-</script>
+<script type="text/javascript" src="StereoPanner.js"></script>
+<script type="text/javascript" src="JilterTaps.js"></script>
+<script type="text/javascript" src="init.js"></script>
 </body>
 </html>
